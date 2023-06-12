@@ -1,3 +1,7 @@
 .AnimalList {
     color: blue;
 }
+
+.AnimalList__list {
+    list-style-type: none;
+}
