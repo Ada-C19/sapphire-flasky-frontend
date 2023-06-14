@@ -2,10 +2,6 @@ import './Animal.css';
 import PropTypes from 'prop-types';
 
 // The responsibility of this component is to be a reusable UI element that displays an Animal's
-// - name
-// - species
-// - age
-// - photo (optional?) -- or a default!
 const Animal = (props) => {
 
     return (
