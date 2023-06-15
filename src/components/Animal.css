@@ -1,3 +1,38 @@
 .Animal {
     text-align: center;
+    padding: 2rem;
+    border-radius: 30px;
+    border: double 20px white;
+    background-color: peachpuff;
+    margin: 2rem;
+}
+
+.ribbon {
+    border: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    width: 0px;
+    height: 50px;
+    position: relative;
+    top: -45px;
+    transition: 0.2s
+}
+
+.bookmarked .ribbon {
+    border: 20px solid blue;
+    border-bottom: 20px solid transparent;
+}
+
+.bookmark-button {
+    border: white solid 2px;
+    background: none;
+    font-size: 1.2em;
+    color: white;
+    font-weight: bolder;
+    text-transform: lowercase;
+    transition: 0.2s
+}
+
+.bookmark-button:hover {
+    background-color: white;
+    color: peachpuff;
 }

@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+h1 {
+  font-family: 'Shrikhand', cursive;
+  font-size: 3em;
+  border-bottom: solid 5px black;
+}
+
+h2 {
+  font-family: 'Shrikhand', cursive;
+}

@@ -13,6 +13,9 @@ const AnimalList = ({ listOfAnimals }) => {
         <h2>Animal List</h2>
         <ul className="AnimalList__list">
             {
+                // This embedded JSX snippet is responsible for
+                // 1. Reading the prop named listOfAnimals
+                // 2. Generating an <li> element for each creature in listOfAnimals
                 listOfAnimals.map((creature) => (
                     <li key={creature.id}>
                         <Animal

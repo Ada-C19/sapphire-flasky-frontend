@@ -1,14 +1,30 @@
 import './Animal.css';
 import PropTypes from 'prop-types';
 
-// The responsibility of this component is to be a reusable UI element that displays an Animal's
+import { useState } from 'react';
+
 const Animal = (props) => {
 
+    const [isBookmarked, setIsBookmarked] = useState(false);
+
+    const toggleBookmark = () => {
+        setIsBookmarked(!isBookmarked);
+    }
+
+    const altText = `Photo of ${props.name}`;
+
+    let animalStyle = 'Animal';
+    if (isBookmarked) {
+        animalStyle = 'Animal bookmarked';
+    }
+
     return (
-    <section className="Animal">
-        <h3>Name: { props.name } (cute!)</h3>
+    <section className={animalStyle}>
+        <div className='ribbon'></div>
+        { props.photo ? <img src={ props.photo } alt={ altText }></img> : "[No Photo]" }
+        <h3>Name: { props.name }</h3>
         <p>Species: { props.species }</p>
-        { props.photo ? <img src={ props.photo } alt="Photo of Willow"></img> : "[No Photo]" }
+        <button onClick={toggleBookmark} className="bookmark-button">🌟 Bookmark</button>
     </section>);
 };
 
