@@ -49,11 +49,11 @@ const Animal = (props) => {
 
     return (
     <section className={animalStyle}>
-        <h3>Name: { props.name } (cute!)</h3>
-        <p>Species: { props.species }</p>
+        <div className='ribbon'></div>
         { props.photo ? <img src={ props.photo } alt={ altText }></img> : "[No Photo]" }
-        <button onClick={toggleBookmark}>Bookmark</button>
-        <p>Is bookmarked? {isBookmarked ? "Yes this animal is bookmarked" : "No this animal is not bookmarked"}</p>
+        <h3>Name: { props.name }</h3>
+        <p>Species: { props.species }</p>
+        <button onClick={toggleBookmark} className="bookmark-button">🌟 Bookmark</button>
 
     </section>);
 };
