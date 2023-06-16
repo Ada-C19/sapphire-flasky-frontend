@@ -8,6 +8,8 @@ const AnimalList = (props) => {
     const listOfAnimals = props.listOfAnimals;
     // const { listOfAnimals } = props;
 
+    console.log(props);
+
     return (
     <section className="AnimalList">
         <h2>Animal List</h2>
@@ -25,6 +27,7 @@ const AnimalList = (props) => {
                             photo={ creature.photo }
                             isBookmarked = { creature.isBookmarked }
                             updateBookmark = { props.updateBookmark }
+                            updateDelete = { props.updateDelete }
                         />
                     </li>)
                 ) 
@@ -46,7 +49,8 @@ AnimalList.propTypes = {
             isBookmarked: PropTypes.bool
         })
     ), 
-    updateBookmark: PropTypes.func
+    updateBookmark: PropTypes.func,
+    updateDelete: PropTypes.func
 }
 
 export default AnimalList;

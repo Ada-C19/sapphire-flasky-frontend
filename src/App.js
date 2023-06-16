@@ -54,12 +54,31 @@ function App() {
     setAnimals(updatedAnimals);
   }
 
+  const updateDelete = (animalId) => {
+    const updatedAnimals = animals.map((animal) => {
+      if (animal.id !== animalId) {
+        return { ...animal };
+      }
+    });
+
+    // taken from https://stackoverflow.com/questions/28607451/removing-undefined-values-from-array
+    const filteredUpdatedData = updatedAnimals.filter(function (element) {
+      return element !== undefined;
+    });
+
+    setAnimals(filteredUpdatedData);
+  }
+
 
   // Comments outside of JSX (but still in JavaScript (aka JS that is not "returned")) can still be //'s.
   return (
     <section>
       <h1>The Sapphire Animal Adoption Agency</h1>
-      <AnimalList listOfAnimals={animals} updateBookmark={updateBookmark}></AnimalList>
+      <AnimalList 
+        listOfAnimals={animals} 
+        updateBookmark={updateBookmark} 
+        updateDelete={updateDelete}
+      ></AnimalList>
     </section>
   );
 }
