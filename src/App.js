@@ -36,12 +36,16 @@ const INITIAL_ANIMALS = [
 function App() {
   const [animals, setAnimals] = useState(INITIAL_ANIMALS);
 
+  const updateBookmark = () => {
+    console.log('a bookmark was updated!')
+  }
+
 
   // Comments outside of JSX (but still in JavaScript (aka JS that is not "returned")) can still be //'s.
   return (
     <section>
       <h1>The Sapphire Animal Adoption Agency</h1>
-      <AnimalList listOfAnimals={animals} ></AnimalList>
+      <AnimalList listOfAnimals={animals} updateBookmark={updateBookmark}></AnimalList>
     </section>
   );
 }

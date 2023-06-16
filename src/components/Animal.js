@@ -8,7 +8,11 @@ const Animal = (props) => {
     const [isBookmarked, setIsBookmarked] = useState(false);
 
     const toggleBookmark = () => {
+        // We want event handler function to do two things:
+            // update component's internal state
+            // update that information to SSOT
         setIsBookmarked(!isBookmarked);
+        props.updateBookmark();
     }
 
     const altText = `Photo of ${props.name}`;
@@ -33,7 +37,8 @@ Animal.propTypes = {
     species: PropTypes.string.isRequired,
     adopted: PropTypes.bool,
     age: PropTypes.number,
-    photo: PropTypes.string
+    photo: PropTypes.string,
+    updateBookmark: PropTypes.func
 }
 
 export default Animal;
