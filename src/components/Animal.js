@@ -5,20 +5,17 @@ import { useState } from 'react';
 
 const Animal = (props) => {
 
-    const [isBookmarked, setIsBookmarked] = useState(props.isBookmarked);
-
     const toggleBookmark = () => {
         // We want event handler function to do two things:
             // update component's internal state
             // update that information to SSOT
-        setIsBookmarked(!isBookmarked);
         props.updateBookmark(props.id);
     }
 
     const altText = `Photo of ${props.name}`;
 
     let animalStyle = 'Animal';
-    if (isBookmarked) {
+    if (props.isBookmarked) {
         animalStyle = 'Animal bookmarked';
     }
 

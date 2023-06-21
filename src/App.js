@@ -25,9 +25,19 @@ function App() {
     // create a new list of animals with updated bookmark value
     const updatedAnimals = animals.map(animal => {
       if (animal.id === animalId) {
-        animal.isBookmarked = !animal.isBookmarked;
-      };
-      return {...animal}
+        // Method 1: Copy then modify.
+        // let animal2 = {...animal};
+        // animal2.isBookmarked = !animal.isBookmarked;
+        // return animal2;
+
+        // Method 2: Use spread syntax w/ override to create modified copy.
+        return {
+          ...animal,
+          isBookmarked: !animal.isBookmarked
+        }
+      }
+
+      return animal;
     });
 
     setAnimals(updatedAnimals);
