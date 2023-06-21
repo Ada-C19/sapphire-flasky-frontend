@@ -1,45 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './App.css';
 import AnimalList from './components/AnimalList';
-
-const INITIAL_ANIMALS = [
-  {
-    id: 100,
-    name: "Violet",
-    species: "pitbull mix",
-    isBookmarked: false,
-  },
-  {
-    id: 101,
-    name: "Norman",
-    species: "Pyrenees puppy",
-    isBookmarked: false,
-  },
-  {
-    id: 102,
-    name: "Juni",
-    species: "Poodle",
-    photo: "https://images.dog.ceo/breeds/poodle-toy/n02113624_333.jpg",
-    isBookmarked: false,
-  },
-  {
-    id: 103,
-    name: "Sabine",
-    species: "Dog",
-    isBookmarked: false,
-  },
-  {
-    id: 104,
-    name: "Paprika and Braven",
-    species: "Kittens",
-    photo:
-      "https://www.felinefriendsofsammamish.com/app/pet/img/000359-008.jpg",
-    isBookmarked: false,
-  },
-];
+import axios from 'axios';
 
 function App() {
-  const [animals, setAnimals] = useState(INITIAL_ANIMALS);
+  const [animals, setAnimals] = useState([]);
+
+  useEffect( () => {
+    axios.get('http://127.0.0.1:5000/animals')
+      .then( (response) => {
+        const initialAnimalData = [];
+        response.data.forEach(animal => {
+          initialAnimalData.push(animal);
+        });
+        setAnimals(initialAnimalData);
+      })
+      .catch( (error) => {
+        console.log('error', error);
+      });
+  }, [])
 
   const updateBookmark = (animalId) => {
 
