@@ -18,7 +18,7 @@ function App() {
       .catch( (error) => {
         console.log('error', error);
       });
-  }, [])
+  }, []);
 
   const updateBookmark = (animalId) => {
 
@@ -44,18 +44,25 @@ function App() {
   }
 
   const updateDelete = (animalId) => {
-    const updatedAnimals = animals.map((animal) => {
-      if (animal.id !== animalId) {
-        return { ...animal };
-      }
-    });
+    axios.delete(`http://127.0.0.1:5000/animals/${animalId}`)
+      .then((response) => {
+        const updatedAnimals = animals.map((animal) => {
+          if (animal.id !== animalId) {
+            return { ...animal };
+          }
+        });
 
-    // taken from https://stackoverflow.com/questions/28607451/removing-undefined-values-from-array
-    const filteredUpdatedData = updatedAnimals.filter(function (element) {
-      return element !== undefined;
-    });
+        // taken from https://stackoverflow.com/questions/28607451/removing-undefined-values-from-array
+        const filteredUpdatedData = updatedAnimals.filter(function (element) {
+          return element !== undefined;
+        });
 
-    setAnimals(filteredUpdatedData);
+        setAnimals(filteredUpdatedData);
+      })
+      .catch((error) => {
+        // if it's not successful, print out error details for now
+        console.log('could not delete animal', error, error.response);
+      });
   }
 
 
