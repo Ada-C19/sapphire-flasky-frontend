@@ -43,19 +43,32 @@ function App() {
     setAnimals(updatedAnimals);
   }
 
+  // This function will try to delete an animal by sending a DELETE request to our backend (we'll need to confirm details about this request with our backend (what is the verb? path? any expected params? how do we pass in animalId?))
+  // THEN if the delete is successful (status code 200), we'll update the state of animals (using our original logic)
   const updateDelete = (animalId) => {
-    const updatedAnimals = animals.map((animal) => {
-      if (animal.id !== animalId) {
-        return { ...animal };
-      }
-    });
 
-    // taken from https://stackoverflow.com/questions/28607451/removing-undefined-values-from-array
-    const filteredUpdatedData = updatedAnimals.filter(function (element) {
-      return element !== undefined;
-    });
+    // make a delete request to our correct "delete endpoint" in our backend...
+    axios.delete(`http://127.0.0.1:5000/animals/${animalId}`)
+      .then((response) => {
+        // then, if it's successful, console.log the data, then update animals state
+        console.log('response', response.data);
+        const updatedAnimals = animals.map((animal) => {
+          if (animal.id !== animalId) {
+            return { ...animal };
+          }
+        });
 
-    setAnimals(filteredUpdatedData);
+        // taken from https://stackoverflow.com/questions/28607451/removing-undefined-values-from-array
+        const filteredUpdatedData = updatedAnimals.filter(function (element) {
+          return element !== undefined;
+        });
+
+        setAnimals(filteredUpdatedData);
+      })
+      .catch((error) => {
+        // if it's not successful, print out error details for now
+        console.log('could not delete animal', error, error.response);
+      });
   }
 
 
