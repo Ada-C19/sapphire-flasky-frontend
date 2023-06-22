@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import './App.css';
 import AnimalList from './components/AnimalList';
+import NewAnimalForm from "./components/NewAnimalForm";
 import axios from 'axios';
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
   return (
     <section>
       <h1>The Sapphire Animal Adoption Agency</h1>
+      <NewAnimalForm />
       <AnimalList 
         listOfAnimals={animals} 
         updateBookmark={updateBookmark} 
