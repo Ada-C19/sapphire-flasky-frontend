@@ -7,18 +7,23 @@ import axios from 'axios';
 function App() {
   const [animals, setAnimals] = useState([]);
 
-  useEffect( () => {
-    axios.get('http://127.0.0.1:5000/animals')
-      .then( (response) => {
+  const loadAnimals = () => {
+    axios
+      .get("http://127.0.0.1:5000/animals")
+      .then((response) => {
         const initialAnimalData = [];
-        response.data.forEach(animal => {
+        response.data.forEach((animal) => {
           initialAnimalData.push(animal);
         });
         setAnimals(initialAnimalData);
       })
-      .catch( (error) => {
-        console.log('error', error);
+      .catch((error) => {
+        console.log("error", error);
       });
+  }
+
+  useEffect( () => {
+    loadAnimals();
   }, []);
 
   const updateBookmark = (animalId) => {
@@ -75,7 +80,17 @@ function App() {
 
     axios
       .post("http://127.0.0.1:5000/animals", updateNewAnimalInfo)
-      .then()
+      .then(() => {
+        // TWO OPTIONS:
+        //  make another GET request to refresh the page <-- DO THIS! 
+        // loadAnimals();
+
+        // update the animals state to refresh the page
+        const newAnimalsArray = [...animals];
+        newAnimalsArray.push(newAnimalInfo);
+        setAnimals(newAnimalsArray)
+
+      })
       .catch((error) => {
         console.log(error);
       });
