@@ -66,12 +66,15 @@ function App() {
       });
   }
 
+  const createNewAnimal = (newAnimalInfo) => {
+    console.log("Inside app.js & createNewAnimal function")
+  } 
 
   // Comments outside of JSX (but still in JavaScript (aka JS that is not "returned")) can still be //'s.
   return (
     <section>
       <h1>The Sapphire Animal Adoption Agency</h1>
-      <NewAnimalForm />
+      <NewAnimalForm createNewAnimal={createNewAnimal}/>
       <AnimalList 
         listOfAnimals={animals} 
         updateBookmark={updateBookmark} 
