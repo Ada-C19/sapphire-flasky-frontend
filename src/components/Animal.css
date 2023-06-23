@@ -22,17 +22,19 @@
     border-bottom: 20px solid transparent;
 }
 
-.bookmark-button {
+button {
     border: white solid 2px;
     background: none;
     font-size: 1.2em;
     color: white;
     font-weight: bolder;
     text-transform: lowercase;
-    transition: 0.2s
+    transition: 0.2s;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
-.bookmark-button:hover {
+button:hover {
     background-color: white;
     color: peachpuff;
 }
