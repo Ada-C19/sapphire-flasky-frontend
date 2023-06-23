@@ -67,7 +67,18 @@ function App() {
   }
 
   const createNewAnimal = (newAnimalInfo) => {
-    console.log("Inside app.js & createNewAnimal function")
+    // add sanctuary_id as a key so flask doesn't freak out 
+    const updateNewAnimalInfo = {
+      ...newAnimalInfo,
+      "sanctuary_id": null
+    }
+
+    axios
+      .post("http://127.0.0.1:5000/animals", updateNewAnimalInfo)
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
   } 
 
   // Comments outside of JSX (but still in JavaScript (aka JS that is not "returned")) can still be //'s.

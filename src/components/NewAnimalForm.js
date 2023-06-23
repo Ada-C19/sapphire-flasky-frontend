@@ -28,8 +28,8 @@ function NewAnimalForm(props) {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log("Congrats! You pressed submit!!")
-    props.createNewAnimal();
+    props.createNewAnimal(animalFormData);
+    setAnimalFormData(INITIAL_FORM_DATA);
   }
 
   return (
